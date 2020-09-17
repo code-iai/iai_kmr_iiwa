@@ -3,7 +3,7 @@
   <!-- Import Rviz colors -->
   <!-- <xacro:include filename="$(find kmr_iiwa_description)/urdf/materials.xacro" /> -->
   <!--Import the lbr iiwa macro -->
-  <xacro:include filename="$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa.xacro"/>
+  <xacro:include filename="$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa_with_odom_joints.xacro"/>
   
   <xacro:arg name="hardware_interface" default="PositionJointInterface"/>
   <xacro:arg name="robot_name" default="kmr_iiwa"/>
