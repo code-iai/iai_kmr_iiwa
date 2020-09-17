@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa14.xacro" />
+  <!-- <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" /> -->
+  <xacro:include filename="$(find iai_kms_40_description)/urdf/kms_40.urdf.xacro"/>
+  <xacro:include filename="$(find iai_adapters_description)/urdf/adapter_fwa050_wsg50.urdf.xacro"/>
+  <xacro:include filename="$(find iai_adapters_description)/urdf/adapter_kms40_fwk050.urdf.xacro"/>
+  <xacro:include filename="$(find iai_adapters_description)/urdf/fwk_fwa_050.urdf.xacro"/>
+  <xacro:include filename="$(find iai_wsg_50_description)/urdf/wsg_50.urdf.xacro"/> 
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find iiwa_description)/urdf/materials.xacro" />
+  <!--Import the lbr iiwa macro -->
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa14.xacro"/>
+
+  <xacro:include filename="$(find kmr_iiwa_description)/urdf/kmr.xacro"/>
+  
+  <xacro:arg name="hardware_interface" default="PositionJointInterface"/>
+  <xacro:arg name="robot_name" default="kmr_iiwa"/>
+  <xacro:arg name="iiwa_name" default="iiwa"/>
+
+<!-- Fix to world just for testing -->
+
+  <material name="gray">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+
+  <xacro:macro name="kmr_iiwa" params="robot_name hardware_interface">
+    <!-- <base/> -->
+
+    <xacro:kmr robot_name="kmr"/>
+
+    <joint name="angle_adapter_base_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="angle_adapter_base" />
+      <origin xyz="-0.363 0 0.7" rpy="0 0 ${-pi/2}" />
+    </joint>
+
+    <link name="angle_adapter_base">
+      <visual>
+        <geometry>
+          <mesh filename="package://kmr_iiwa_description/meshes/angle_adapter_base.stl" scale="1 1 1"/>
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+
+    <joint name="angle_adapter_connector_joint" type="fixed">
+      <parent link="angle_adapter_base" />
+      <child link="angle_adapter_connector" />
+      <origin xyz="0 -0.100197 0.0747412" rpy="${pi/4} 0 0" />
+      <!-- <axis xyz="1 0 0"/> -->
+      <!-- <limit effort="150.0" lower="0" upper="${pi/2}" velocity="1"/> -->
+    </joint>
+
+    <link name="angle_adapter_connector"/>
+
+    <joint name="angle_adapter_plate_joint" type="fixed">
+      <parent link="angle_adapter_connector" />
+      <child link="angle_adapter_plate" />
+      <origin xyz="0 0.1 0.00" rpy="0 0 0" />
+      
+    </joint>
+
+    <link name="angle_adapter_plate">
+      <visual>
+        <geometry>
+          <mesh filename="package://kmr_iiwa_description/meshes/angle_adapter_plate.stl" scale="1 1 1"/>
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+
+    <!--iiwa-->
+    <xacro:iiwa14 hardware_interface="$(arg hardware_interface)" robot_name="$(arg iiwa_name)" parent="angle_adapter_plate">
+      <!-- <origin xyz="0.363 0.184 0.7" rpy="0 0 ${pi/2}" /> -->
+      <origin xyz="0 0 0.00" rpy="0 0 ${-pi/2}" />
+    </xacro:iiwa14>
+
+    <link name="kms_mounting_plate">
+      <visual>
+        <geometry>
+          <mesh filename="package://iai_table_robot_description/meshes/adapter_plate_iso50_kms40_weiss.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+
+    <joint name="kms_mounting_plate_joint" type="fixed">
+      <parent link="iiwa_link_ee" />
+      <child link="kms_mounting_plate" />
+      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+    </joint>
+
+    <kms_40_xacro parent="kms_mounting_plate" prefix="">
+      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+    </kms_40_xacro>
+
+    <adapter_kms40_fwk050_xacro parent="kms40_frame_out" prefix="">
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+    </adapter_kms40_fwk050_xacro>
+
+    <fwk_fwa_050_xacro parent="adapter_kms40_fwk050_frame_out" prefix="">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </fwk_fwa_050_xacro>
+
+    <adapter_fwa050_wsg50_xacro parent="fwk_fwa_050_frame_out" prefix="">
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </adapter_fwa050_wsg50_xacro>
+
+    <wsg_50_xacro name="gripper" parent="adapter_fwa050_wsg50_frame_out">
+      <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
+    </wsg_50_xacro>
+
+    <link name="camera_holder_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://iai_donbot_description/meshes/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
+        </geometry>
+        <material name="gray"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://iai_donbot_description/meshes/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
+        </geometry>
+        <material name="gray"/>
+      </collision>
+    </link>
+
+    <joint name="gripper_to_camera_holder_joint" type="fixed">
+      <parent link="gripper_base_link" />
+      <child link="camera_holder_link" />
+      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+    </joint>
+
+    <link name="camera_link"/>
+
+    <joint name="gripper_to_camera_joint" type="fixed">
+      <parent link="gripper_base_link" />
+      <child link="camera_link" />
+      <!--Calib_errors = [0.003425, 0.2069, 0.00611, 0.42678]
+          Calib_errors = median_pos_error(m), median_orient_error(deg), max_pos_error(m), max_orient_error(deg) -->
+      <!-- from base_link origin xyz="0.004174 -0.067273 0.062438" rpy="0.209203 0.001106 3.120208"/-->
+      <!-- from ur5_base_link origin xyz="0.002956 -0.066498 0.060947" rpy="0.204429 6.281375 3.127197"/-->
+      <!-- calib errors: 0.00311, 0.24373, 0.00688, 0.4558 -->
+      <origin xyz="0.002956 -0.066498 0.060947" rpy="0.204429 6.281375 3.127197" />
+    </joint>
+
+    <link name="rs_camera_link"/>
+
+    <joint name="wristcam_to_realsense_joint" type="fixed">
+      <parent link="camera_link" />
+      <child link="rs_camera_link" />
+      <origin xyz="-0.017993 -0.107556 0.017699" rpy="6.270618 4.930698 1.578454"/>
+    </joint>
+
+    <joint name="wrist_collision_joint" type="fixed">
+      <parent link="adapter_kms40_fwk050_frame_in" />
+      <child link="wrist_collision" />
+      <origin xyz="0 0 -0.005" rpy="0 0 0" />
+    </joint>
+
+    <link name="wrist_collision">
+      <collision>
+        <geometry>
+          <cylinder radius="0.04" length="0.08"/>
+        </geometry>
+        <material name="Silver"/>
+      </collision>
+    </link>
+
+    <joint name="refills_tool_frame_joint" type="fixed">
+      <parent link="gripper_tool_frame"/>
+      <child link="refills_tool_frame"/>
+      <origin xyz="0 0 0.037" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="refills_tool_frame"/>
+
+    <joint name="refills_finger_joint" type="continuous">
+      <parent link="refills_tool_frame"/>
+      <child link="refills_finger"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="refills_finger"/>
+
+  </xacro:macro>
+</robot>

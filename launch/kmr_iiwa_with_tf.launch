@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- This lauch file just loads the URDF with the given hardware interface and robot name into the ROS Parameter Server -->
+  <arg name="hardware_interface" default="PositionJointInterface"/>
+  <arg name="robot_name" default="kmr-iiwa"/>
+
+  <param name="robot_description"
+      command="$(find xacro)/xacro --inorder '$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa.urdf.xacro'
+      hardware_interface:=$(arg hardware_interface)
+      robot_name:=$(arg robot_name)" />
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+    <param name="use_gui" value="True"/>
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
+</launch>
