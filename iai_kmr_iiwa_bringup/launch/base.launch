@@ -34,9 +34,9 @@
 
   
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg navigation_map)" />
-  <include file="$(find iai_kmr_bringup)/launch/amcl_omni.launch"/>
-  <include file="$(find iai_kmr_bringup)/launch/ds4_teleop.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/amcl_omni.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/ds4_teleop.launch"/>
   <!-- <include file="$(find iai_donbot_bringup)/launch/nav_pcontroller.launch"/> -->
-  <!-- <include file="$(find iai_kmr_bringup)/launch/omni_pose_follower.launch"/> -->
+  <!-- <include file="$(find iai_kmr_iiwa_bringup)/launch/omni_pose_follower.launch"/> -->
 
 </launch>

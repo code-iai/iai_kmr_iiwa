@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
-  <include file="$(find iai_kmr_bringup)/launch/base.launch" >
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/base.launch" >
     <arg name="standalone" value="false" />
     <arg name="navigation_map" value="$(arg navigation_map)" />
   </include>
@@ -34,10 +34,10 @@
     <remap from="robot_description" to="giskard/robot_description"/>
   </node>
 
-  <include file="$(find iai_kmr_bringup)/launch/omni_pose_follower.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/omni_pose_follower.launch"/>
 
   <include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa.launch"/>
 
-  <include file="$(find iai_kmr_bringup)/launch/giskardpy_kmr_iiwa_real.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/giskardpy_kmr_iiwa_real.launch"/>
 
 </launch>
