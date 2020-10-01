@@ -12,7 +12,7 @@ on smart pad
 
     flip key 
     
-    click aux
+    click AUT
     
     flip key
     
