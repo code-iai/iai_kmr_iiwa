@@ -1,0 +1,28 @@
+<launch>
+  <arg name="transmission_delay" default="0.0"/>
+
+  <include file="$(find iai_donbot_bringup)/launch/spinnaker_flir_12mp_donbot.launch"/>
+
+  <!-- image_proc for compressed, b&w, etc -->
+  <!--node name="image_proc" pkg="image_proc" type="image_proc" respawn="false" required="true" output="screen" ns="/refills_wrist_camera"/-->
+
+
+  <!-- helper to decimate the image 2x2 -->
+  <node pkg="nodelet" type="nodelet"
+    args="standalone image_proc/crop_decimate"
+    name="flir_resize">
+    <param name="x_offset" type="int" value="0" />
+    <param name="y_offset" type="int" value="0" />
+    <param name="decimation_x" type="int" value="2" />
+    <param name="decimation_y" type="int" value="2" />
+    <param name="interpolation" type="int" value="1" />
+    <remap from="camera/image_raw" to="/refills_wrist_camera/image_raw"/>
+    <remap from="camera/image_info" to="/refills_wrist_camera/camera_info"/>
+    <remap from="camera_out/image_raw" to="/flir_small/image_color"/>
+    <remap from="camera_out/image_info" to="/flir_small/camera_info"/>
+  </node>
+
+
+
+</launch>
+

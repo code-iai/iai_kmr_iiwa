@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
+  <include file="$(find iai_kmr_bringup)/launch/base.launch" >
+    <arg name="standalone" value="false" />
+    <arg name="navigation_map" value="$(arg navigation_map)" />
+  </include>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="use_tf_static" value="false"/>
+  </node>
+
+  <node pkg="giskardpy" type="base_joint_state_publisher.py" name="base_joint_state_publisher" output="screen">
+    <remap from="/base_odometry/odom" to="/odom"/>
+    <param name="use_pose_with_covariance" value="False"/>
+  </node>
+
+  <node pkg="topic_tools" name="remap_joint_states" type="relay" args="joint_states body/joint_states"/>
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+    <rosparam param="source_list">
+    - base/joint_states
+    <!-- - body/joint_states -->
+    </rosparam>
+    <rosparam param="zeros">
+    'odom_x_joint': 0.0
+    'odom_y_joint': 0.0
+    'odom_z_joint': 0.0
+    </rosparam>
+    <param name="rate" value="120"/>
+    <param name="use_gui" value="False"/>
+    <remap from="joint_states" to="giskard/joint_states"/>
+    <remap from="robot_description" to="giskard/robot_description"/>
+  </node>
+
+  <include file="$(find iai_kmr_bringup)/launch/omni_pose_follower.launch"/>
+
+  <include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa.launch"/>
+
+  <include file="$(find iai_kmr_bringup)/launch/giskardpy_kmr_iiwa_real.launch"/>
+
+</launch>

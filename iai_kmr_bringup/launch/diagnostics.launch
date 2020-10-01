@@ -1,0 +1,9 @@
+<launch>
+  <arg name="with_gui" default="false" />
+
+  <include file="$(find iai_rosout_diagnostics)/launch/rosout_diagnostics.launch" >
+    <arg name="aggregator_config" value="$(find iai_donbot_bringup)/config/diagnostic_aggregator.yaml" />
+    <arg name="with_gui" value="$(arg with_gui)" />
+  </include>
+
+</launch>

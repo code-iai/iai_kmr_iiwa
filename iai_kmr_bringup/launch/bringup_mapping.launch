@@ -1,0 +1,12 @@
+<launch>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="use_tf_static" value="false"/>
+  </node>
+  <include file="$(find iai_donbot_description)/launch/upload.launch"/>
+  <!--node name="map_server" pkg="map_server" type="map_server" args="$(arg navigation_map)" /-->
+  <include file="$(find iai_donbot_bringup)/launch/omnidrive_mapping.launch"/>
+  <include file="$(find iai_donbot_bringup)/launch/bringup_hokuyo.launch"/>
+  <include file="$(find omni_teleop)/launch/ds4_teleop.launch"/>
+  <node name="fake_soft_runstop" pkg="iai_donbot_bringup" type="fake_runstop.sh"/>
+ 
+</launch>

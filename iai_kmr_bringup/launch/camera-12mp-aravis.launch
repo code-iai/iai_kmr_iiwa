@@ -1,0 +1,17 @@
+<launch>
+  <arg name="transmission_delay" default="0.0"/>
+
+  <!-- ARAVIS camera driver -->
+  <node name="refills_wrist_camera"  pkg="camera_aravis" type="camnode" args="FLIR-0113E2E0" output="screen">
+    <remap from="/camera" to="/refills_wrist_camera"/>
+    <param name="AcquisitionFrameRate" type="double" value="5.0" />
+    <param name="Gain" type="double" value="22.0" />
+    <param name="ExposureTime" type="double" value="1300.0" />
+    <param name="ExposureAuto" type="string" value="off" />
+    <param name="GainAuto" type="string" value="off" />
+    <param name="frame_id" type="string" value="camera_link" />
+    <param name="transmission_delay" type="double" value="$(arg transmission_delay)"/>
+  </node>
+
+
+</launch>
