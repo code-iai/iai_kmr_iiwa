@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>iai_kmr_iiwa</name>
+    <version>0.0.0</version>
+    <description>The iai_kmr_iiwa package</description>
+
+    <maintainer email="jeroen.schaefer@uni-bremen.de">Jeroen Schäfer</maintainer>
+    <maintainer email="stelter@uni-bremen.de">Simon Stelter</maintainer>
+
+    <license>BSD</license>
+
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+
+    <export>
+        <metapackage/>
+    </export>
+</package>
