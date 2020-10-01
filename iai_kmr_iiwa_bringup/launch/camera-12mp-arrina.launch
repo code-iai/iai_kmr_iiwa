@@ -1,0 +1,15 @@
+<launch>
+    <node name="refills_wrist_camera"  pkg="camera_aravis" type="camnode" args="FLIR-01188428" output="screen"> 
+      <remap from="/camera" to="/refills_wrist_camera"/> 
+      <param name="AcquisitionFrameRate" type="double" value="5.0" />
+      <param name="Gain" type="double" value="31.0" />
+      <param name="ExposureTime" type="double" value="1000.0" />
+      <param name="ExposureAuto" type="string" value="off" />
+      <param name="GainAuto" type="string" value="off" />
+      <param name="frame_id" type="string" value="camera_link" />
+    </node>
+
+    <node name="image_proc" pkg="image_proc" type="image_proc" respawn="false" required="true" output="screen" ns="/refills_wrist_camera"/>
+
+</launch>
+

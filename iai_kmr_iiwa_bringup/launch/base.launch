@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="standalone" default="true"/>
+  <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
+  <!-- <arg name="navigation_map" default="$(find iai_maps)/maps/refills_integration_week.yaml" /> -->
+
+  <group if="$(eval arg('standalone') == true)">
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="use_tf_static" value="false"/>
+    </node>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+      <rosparam param="source_list">
+        - base/joint_states
+      </rosparam>
+      <rosparam param="zeros">
+        'odom_x_joint': 0.0
+        'odom_y_joint': 0.0
+        'odom_z_joint': 0.0
+      </rosparam>
+
+      <param name="rate" value="120"/>
+      <param name="use_gui" value="False"/>
+
+    </node>
+
+	<include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa.launch"/>
+
+    <!-- <include file="$(find iai_donbot_bringup)/launch/diagnostics.launch"/> -->
+
+  </group>
+
+
+  
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg navigation_map)" />
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/amcl_omni.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/ds4_teleop.launch"/>
+  <!-- <include file="$(find iai_donbot_bringup)/launch/nav_pcontroller.launch"/> -->
+  <!-- <include file="$(find iai_kmr_iiwa_bringup)/launch/omni_pose_follower.launch"/> -->
+
+</launch>

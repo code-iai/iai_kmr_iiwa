@@ -1,0 +1,50 @@
+<launch>
+  <node pkg="nav_pcontroller" type="nav_pcontroller" name="nav_pcontroller" output="screen">
+    <remap from="/cmd_vel" to="/omnidrive/cmd_vel_twist"/>
+    <remap from="~laser_1" to="/hokuyo_front/most_intense"/>
+    <remap from="~laser_2" to="/hokuyo_back/most_intense"/>
+    <remap from="~goal" to="/move_base_simple/goal"/>
+    <rosparam>
+      global_frame: map
+      odom_frame: odom
+      base_link_frame: base_footprint
+
+      keep_distance: true                 # avoid obstacles?
+
+      n_lasers: 2                         # number of lasers on robot's base
+
+      footprint:                          # measurements of robot's footprint (radii) [m]
+        front: 0.61
+        rear: -0.40
+        right: -0.34
+        left: 0.37
+        tolerance: 0.0                    # error in the footprint measurements [m]
+
+      slowdown_far: 0.20                 # distance at which to start slowing down [m]
+      slowdown_near: 0.08                 # distance to slow down aggressively [m]
+      safety_dist: 0.06                   # distance at which to brake [m]
+      repelling_dist: 0.10                # distance at which to start backing up [m]
+      repelling_gain: 0.5                 # gain for repelling speed
+      repelling_gain_max: 0.015
+
+      complete_blind_spots: false        # interpolate the angles in blind spots?
+
+      marker_size: 0.1                   # Rviz marker size [m]
+
+      xy_tolerance: 0.002                 # goal distance tolerance was at 0.01
+      th_tolerance: 0.002                 # goal rotation tolerance was at 0.01
+
+      vel_lin_max: 0.1                   # maximum linear velocity [m/s]
+      vel_ang_max: 0.2                  # maximum angular velocity [rad/s]
+      acc_lin_max: 0.4                   # maximum linear acceleration [m/s^2]
+      acc_ang_max: 0.2                   # maximum angular acceleration [rad/s^2]
+
+      loop_rate: 30                      # control loop rate [1/s]
+
+      p: 1.2                             # P controller value
+
+      speed_filter_name: /nav_pcontroller
+      fail_timeout: 62.8
+    </rosparam>
+  </node>
+</launch>

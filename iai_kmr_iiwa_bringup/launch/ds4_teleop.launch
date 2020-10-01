@@ -1,0 +1,18 @@
+<launch>
+  <arg name="dev" default="/dev/input/js0" />
+
+  <!-- Read input and publish joy messages -->
+  <node pkg="joy" type="joy_node" name="ds4_joy" output="screen" >
+    <param name="dev" type="string" value="$(arg dev)" />
+    <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="20" />
+    <param name="coalesce_interval" value="0.01" />
+  </node>
+  
+  <!-- Read joy messages and publish twist messages -->
+  <node pkg="omni_teleop" type="omni_joy" name="teleop_joystick" >
+    <param name="stamped_interface" value="false" />
+    <param name="axis_angular" value="3" /> <!-- for the kernel js interface -->
+  </node>
+
+</launch>
