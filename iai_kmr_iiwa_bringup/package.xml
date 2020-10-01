@@ -11,7 +11,7 @@
 
 
     <buildtool_depend>catkin</buildtool_depend>
-
+    <exec_depend>iai_kmr_iiwa_description</exec_depend>
 
     <export>
     </export>

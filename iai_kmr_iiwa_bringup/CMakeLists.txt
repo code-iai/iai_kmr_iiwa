@@ -5,7 +5,7 @@ project(iai_kmr_iiwa_bringup)
 # add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED iai_kmr_iiwa_description)
 
 ###################################
 ## catkin specific configuration ##
