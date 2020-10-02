@@ -1,10 +1,10 @@
-### ips
+## ips
 - marge `192.168.102.78`
 - nav pc `192.168.103.16`
 - smart pad `192.168.103.17`
 - sick laser stuff `192.168.103.18`
 
-### run shit
+## run shit
 
 log in marge and execute root thingy
 
@@ -35,8 +35,8 @@ start ros smart servo with green play button
 ```
     
     
-### troubleshooting
-## how to change sick laser safety fields
+## troubleshooting
+### how to change sick laser safety fields
 - install sick stuff on windoff `https://www.sick.com/de/de/cds/p/p37940`
 
 - connect to sick laser ip
