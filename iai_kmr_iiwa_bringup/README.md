@@ -1,8 +1,8 @@
 ### ips
-marge `192.168.102.78`
-nav pc `192.168.103.16`
-smart pad `192.168.103.17`
-sick laser stuff `192.168.103.18`
+- marge `192.168.102.78`
+- nav pc `192.168.103.16`
+- smart pad `192.168.103.17`
+- sick laser stuff `192.168.103.18`
 
 ### run shit
 
