@@ -13,6 +13,7 @@
     <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
       <rosparam param="source_list">
         - base/joint_states
+        - iiwa/joint_states
       </rosparam>
       <rosparam param="zeros">
         'odom_x_joint': 0.0
@@ -37,6 +38,6 @@
   <include file="$(find iai_kmr_iiwa_bringup)/launch/amcl_omni.launch"/>
   <include file="$(find iai_kmr_iiwa_bringup)/launch/ds4_teleop.launch"/>
   <!-- <include file="$(find iai_donbot_bringup)/launch/nav_pcontroller.launch"/> -->
-  <!-- <include file="$(find iai_kmr_iiwa_bringup)/launch/omni_pose_follower.launch"/> -->
+  
 
 </launch>

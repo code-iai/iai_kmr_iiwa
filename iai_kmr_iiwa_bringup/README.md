@@ -11,7 +11,7 @@ log in marge and execute root thingy
 on marge:
 ```
 roscore
-roslaunch iai_kmr_iiwa_bringup base.launch
+roslaunch iai_kmr_iiwa_bringup bringup_everything.launch
 ```
 
 nomachine to nav pc 
