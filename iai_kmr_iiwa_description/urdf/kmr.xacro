@@ -13,7 +13,7 @@
 
     <link name="base_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://iai_kmr_iiwa_description/meshes/kmp200_3ds_export.dae"/>
         </geometry>
@@ -21,7 +21,7 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://iai_kmr_iiwa_description/meshes/kmp200_export.stl"/>
         </geometry>
@@ -29,21 +29,21 @@
       </collision>
     </link>
 
-  <!--   <joint name="back_laser_joint" type="fixed">
-      <parent link="base_footprint"/>
+    <joint name="back_laser_joint" type="fixed">
+      <parent link="base_link"/>
       <child link="back_laser"/>
-      <origin xyz="-0.464, 0.256, 0.140" rpy="0.000, -0.000, 2.356"/>
+      <origin xyz="-0.464 0.256 0.140" rpy="0.000 -0.000 2.356"/>
     </joint>
 
     <link name="back_laser"/>
 
     <joint name="front_laser_joint" type="fixed">
-      <parent link="base_footprint"/>
+      <parent link="base_link"/>
       <child link="front_laser"/>
-      <origin xyz="0.464, -0.256, 0.140" rpy="0.000, 0.000, -0.785"/>
+      <origin xyz="0.464 -0.256 0.140" rpy="0.000 0.000 -0.785"/>
     </joint>
 
-    <link name="front_laser"/> -->
+    <link name="front_laser"/>
 
   </xacro:macro>
 
