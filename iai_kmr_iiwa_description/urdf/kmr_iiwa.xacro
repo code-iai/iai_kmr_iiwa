@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa14.xacro" />
-  <!-- <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" /> -->
   <xacro:include filename="$(find iai_kms_40_description)/urdf/kms_40.urdf.xacro"/>
   <xacro:include filename="$(find iai_adapters_description)/urdf/adapter_fwa050_wsg50.urdf.xacro"/>
   <xacro:include filename="$(find iai_adapters_description)/urdf/adapter_kms40_fwk050.urdf.xacro"/>
@@ -91,25 +89,25 @@
       <origin xyz="0 0 0" rpy="0 0 ${pi}" />
     </joint>
 
-    <kms_40_xacro parent="kms_mounting_plate" prefix="">
+    <xacro:kms_40_xacro parent="kms_mounting_plate" prefix="">
       <origin xyz="0 0 0" rpy="0 0 ${pi}" />
-    </kms_40_xacro>
+    </xacro:kms_40_xacro>
 
-    <adapter_kms40_fwk050_xacro parent="kms40_frame_out" prefix="">
+    <xacro:adapter_kms40_fwk050_xacro parent="kms40_frame_out" prefix="">
       <origin xyz="0 0 0" rpy="0 0 0" /> 
-    </adapter_kms40_fwk050_xacro>
+    </xacro:adapter_kms40_fwk050_xacro>
 
-    <fwk_fwa_050_xacro parent="adapter_kms40_fwk050_frame_out" prefix="">
+    <xacro:fwk_fwa_050_xacro parent="adapter_kms40_fwk050_frame_out" prefix="">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </fwk_fwa_050_xacro>
+    </xacro:fwk_fwa_050_xacro>
 
-    <adapter_fwa050_wsg50_xacro parent="fwk_fwa_050_frame_out" prefix="">
+    <xacro:adapter_fwa050_wsg50_xacro parent="fwk_fwa_050_frame_out" prefix="">
       <origin xyz="0 0 0.0" rpy="0 0 0" />
-    </adapter_fwa050_wsg50_xacro>
+    </xacro:adapter_fwa050_wsg50_xacro>
 
-    <wsg_50_xacro name="gripper" parent="adapter_fwa050_wsg50_frame_out">
+    <xacro:wsg_50_xacro name="gripper" parent="adapter_fwa050_wsg50_frame_out">
       <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
-    </wsg_50_xacro>
+    </xacro:wsg_50_xacro>
 
     <link name="camera_holder_link">
       <visual>
