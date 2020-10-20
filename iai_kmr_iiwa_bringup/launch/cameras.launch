@@ -1,13 +1,13 @@
 <launch>
 
-  <include file="$(find iai_donbot_bringup)/launch/camera-12mp.launch">
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/camera-12mp.launch">
     <arg name="transmission_delay" value="0"/>
   </include>
 
-  <include file="$(find iai_donbot_bringup)/launch/d435.launch">
+<!--   <include file="$(find iai_kmr_iiwa_bringup)/launch/d435.launch">
     <arg name="transmission_delay" value="0"/>
-  </include>
+  </include> -->
 
-  <include file="$(find iai_ringlight_controller)/launch/iai_ringlight_service.launch"/> 
+  <!-- <include file="$(find iai_ringlight_controller)/launch/iai_ringlight_service.launch"/>  -->
 
 </launch>

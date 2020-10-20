@@ -7,4 +7,6 @@
 
   <include file="$(find iai_kmr_iiwa_bringup)/launch/giskardpy_kmr_iiwa_real.launch"/>
 
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/cameras.launch"/>
+
 </launch>
