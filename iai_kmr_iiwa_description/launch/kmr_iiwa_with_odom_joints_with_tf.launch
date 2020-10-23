@@ -6,7 +6,7 @@
   <arg name="robot_name" default="kmr-iiwa"/>
 
   <param name="robot_description"
-      command="$(find xacro)/xacro --inorder '$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa.urdf.xacro'
+      command="$(find xacro)/xacro --inorder '$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa_with_odom_joints.urdf.xacro'
       hardware_interface:=$(arg hardware_interface)
       robot_name:=$(arg robot_name)" />
 
@@ -17,6 +17,4 @@
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
-
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization2" output="screen" args="0 0 0 0 0 0 odom base_link" />
 </launch>
