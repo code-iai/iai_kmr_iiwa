@@ -1,26 +1,32 @@
 <launch>
   <arg name="serial_no"           default=""/>
-  <arg name="json_file_path"      default="$(find iai_donbot_bringup)/launch/includes/d435-high-acc.json"/>
+  <arg name="json_file_path"      default="$(find iai_kmr_iiwa_bringup)/launch/includes/d435-high-density.json"/>
   <arg name="camera"              default="rs_camera"/>
+
+  <!-- <arg name="width"              value="848"/> -->
+  <!-- <arg name="height"              value="480"/> -->
+
+  <arg name="width"              value="1280"/>
+  <arg name="height"              value="720"/>
 
   <arg name="fisheye_width"       default="640"/>
   <arg name="fisheye_height"      default="480"/>
   <arg name="enable_fisheye"      default="true"/>
 
-  <arg name="depth_width"         default="848"/>
-  <arg name="depth_height"        default="480"/>
+  <arg name="depth_width"         default="$(arg width)"/>
+  <arg name="depth_height"        default="$(arg height)"/>
   <arg name="enable_depth"        default="true"/>
 
-  <arg name="infra1_width"        default="848"/>
-  <arg name="infra1_height"       default="480"/>
+  <arg name="infra1_width"        default="$(arg width)"/>
+  <arg name="infra1_height"       default="$(arg height)"/>
   <arg name="enable_infra1"       default="true"/>
 
-  <arg name="infra2_width"        default="848"/>
-  <arg name="infra2_height"       default="480"/>
+  <arg name="infra2_width"        default="$(arg width)"/>
+  <arg name="infra2_height"       default="$(arg height)"/>
   <arg name="enable_infra2"       default="true"/>
 
-  <arg name="color_width"         default="848"/>
-  <arg name="color_height"        default="480"/>
+  <arg name="color_width"         default="$(arg width)"/>
+  <arg name="color_height"        default="$(arg height)"/>
   <arg name="enable_color"        default="true"/>
 
   <arg name="fisheye_fps"         default="6"/>

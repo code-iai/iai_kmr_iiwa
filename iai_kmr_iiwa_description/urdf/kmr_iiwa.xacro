@@ -86,7 +86,7 @@
     <joint name="kms_mounting_plate_joint" type="fixed">
       <parent link="iiwa_link_ee" />
       <child link="kms_mounting_plate" />
-      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
     <xacro:kms_40_xacro parent="kms_mounting_plate" prefix="">

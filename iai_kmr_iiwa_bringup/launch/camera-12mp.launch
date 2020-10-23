@@ -1,7 +1,7 @@
 <launch>
   <arg name="transmission_delay" default="0.0"/>
 
-  <include file="$(find iai_donbot_bringup)/launch/spinnaker_flir_12mp_donbot.launch"/>
+  <include file="$(find iai_kmr_iiwa_bringup)/launch/spinnaker_flir_12mp_donbot.launch"/>
 
   <!-- image_proc for compressed, b&w, etc -->
   <!--node name="image_proc" pkg="image_proc" type="image_proc" respawn="false" required="true" output="screen" ns="/refills_wrist_camera"/-->

@@ -18,7 +18,7 @@
   <arg name="to_ros"            default="true"	doc="Flag whether images should be published to ROS" />
   <arg name="utstamps"          default="false"	doc="Flag whether each image should have Unique timestamps vs the master cams time stamp for all" />
   <arg name="max_rate_save"     default="false"	doc="Flag for max rate mode which is when the master triggerst the slaves and saves images at maximum rate possible" />
-  <arg name="config_file"       default="$(find iai_donbot_bringup)/config/flir_params.yaml" doc="File specifying the parameters of the camera_array"/>
+  <arg name="config_file"       default="$(find iai_kmr_iiwa_bringup)/config/flir_params.yaml" doc="File specifying the parameters of the camera_array"/>
 
   <!-- load the acquisition node -->
   <node pkg="spinnaker_sdk_camera_driver" type="acquisition_node" name="refills_wrist_camera_driver" output="$(arg output)" respawn="true"
