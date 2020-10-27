@@ -1,0 +1,16 @@
+simulated_joints:
+  - odom_x_joint
+  - odom_y_joint
+  - odom_z_joint
+
+controlled_joints:
+  - odom_x_joint
+  - odom_y_joint
+  - odom_z_joint
+start_config:
+  odom_x_joint: 0.0
+  odom_y_joint: 0.0
+  odom_z_joint: 0.0
+projection_mode: false
+sim_frequency: 100
+watchdog_period: 0.1

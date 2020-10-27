@@ -1,0 +1,54 @@
+<launch>
+  <include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa_with_odom_joints.launch" />
+
+  <include file="$(find iai_donbot_sim)/launch/wsg_50_for_kinematic_sim.launch" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
+
+  <rosparam command="load" file="$(find iai_kmr_iiwa_sim)/config/ros_control_sim.yaml" />
+
+  <node pkg="ros_control_boilerplate" type="sim_hw_main" name="simulator" output="screen">
+    <remap from="joint_states" to="body/joint_states" />
+  </node>
+
+  <node pkg="controller_manager" type="spawner" name="spawner" output="screen" args="joint_state_controller whole_body_controller/body gripper_controller --shutdown-timeout 0.5" />
+
+  <node pkg="iai_naive_kinematics_sim" type="simulator" name="base_simulator" output="screen">
+    <rosparam command="load" file="$(find iai_kmr_iiwa_sim)/config/naive_kinematics_sim_base.yaml" />
+    <remap from="~joint_states" to="base/joint_states" />
+    <remap from="~commands" to="/commands" />
+  </node>
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+    <rosparam param="source_list">
+    - base/joint_states
+    - body/joint_states
+    - refills_finger/joint_states
+    - r_gripper/joint_states
+    - l_gripper/joint_states
+    </rosparam>
+    <rosparam param="zeros">
+    'angle_adapter_connector_joint': 0.785
+    </rosparam>
+    <param name="rate" value="120"/>
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
+
+  <node pkg="iai_naive_kinematics_sim" type="fake_base_controller.py" name="base_controller" output="screen">
+    <param name="odom_x_joint" value="odom_x_joint"/>
+    <param name="odom_y_joint" value="odom_y_joint"/>
+    <param name="odom_z_joint" value="odom_z_joint"/>
+    <param name="odom" value="odom"/>
+    <remap from="~cmd_vel" to="/cmd_vel" />
+    <remap from="~commands" to="/commands" />
+  </node>
+
+  <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
+
+  <include file="$(find iai_donbot_sim)/launch/refills_finger_hacks.launch"/>
+
+</launch>
