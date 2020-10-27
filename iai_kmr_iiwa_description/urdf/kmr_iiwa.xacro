@@ -6,9 +6,9 @@
   <xacro:include filename="$(find iai_adapters_description)/urdf/fwk_fwa_050.urdf.xacro"/>
   <xacro:include filename="$(find iai_wsg_50_description)/urdf/wsg_50.urdf.xacro"/> 
   <!-- Import Rviz colors -->
-  <xacro:include filename="$(find iiwa_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find iai_iiwa_description)/urdf/materials.xacro" />
   <!--Import the lbr iiwa macro -->
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa14.xacro"/>
+  <xacro:include filename="$(find iai_iiwa_description)/urdf/iiwa14.xacro"/>
 
   <xacro:include filename="$(find iai_kmr_iiwa_description)/urdf/kmr.xacro"/>
   
