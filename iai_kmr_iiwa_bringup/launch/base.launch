@@ -41,3 +41,8 @@
   
 
 </launch>
+
+<!-- 
+how to make a map
+rosrun gmapping slam_gmapping scan:=scan_front _base_frame:=base_link _odom_frame:=odom _xmin:=-50  _xmax:=50 _ymin:=-50 _ymax:=50 _delta:=0.02
+ -->

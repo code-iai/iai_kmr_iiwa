@@ -1,6 +1,9 @@
 <launch>
 
-  <param name="giskard/robot_description" command="$(find xacro)/xacro '$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa_with_odom_joints.xacro'" />
+  <!-- <include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa_with_odom_joint.launch">
+    <remap from="robot_description" to="giskard/robot_description"/>
+  </include> -->
+  <param name="giskard/robot_description" command="$(find xacro)/xacro '$(find iai_kmr_iiwa_description)/urdf/kmr_iiwa_with_odom_joints.urdf.xacro'" />
 
   <node pkg="giskardpy" type="base_joint_state_publisher.py" name="base_joint_state_publisher" output="screen">
     <remap from="/base_odometry/odom" to="/odom"/>
