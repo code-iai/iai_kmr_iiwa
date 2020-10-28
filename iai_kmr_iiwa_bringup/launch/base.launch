@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="standalone" default="true"/>
-  <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
+  <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab_kmr_iiwa.yaml" />
   <!-- <arg name="navigation_map" default="$(find iai_maps)/maps/refills_integration_week.yaml" /> -->
 
   <group if="$(eval arg('standalone') == true)">
