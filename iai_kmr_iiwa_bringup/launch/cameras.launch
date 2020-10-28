@@ -8,6 +8,6 @@
     <arg name="transmission_delay" value="0"/>
   </include> -->
 
-  <!-- <include file="$(find iai_ringlight_controller)/launch/iai_ringlight_service.launch"/>  -->
+  <include file="$(find iai_ringlight_controller)/launch/iai_ringlight_service.launch"/> 
 
 </launch>
