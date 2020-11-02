@@ -106,7 +106,7 @@
     </xacro:adapter_fwa050_wsg50_xacro> -->
 
     <xacro:wsg_50_xacro name="gripper" parent="fwk_fwa_050_frame_out">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
     </xacro:wsg_50_xacro>
 
     <link name="camera_holder_link">
@@ -140,7 +140,12 @@
       <!-- from base_link origin xyz="0.004174 -0.067273 0.062438" rpy="0.209203 0.001106 3.120208"/-->
       <!-- from ur5_base_link origin xyz="0.002956 -0.066498 0.060947" rpy="0.204429 6.281375 3.127197"/-->
       <!-- calib errors: 0.00311, 0.24373, 0.00688, 0.4558 -->
-      <origin xyz="0.001329 -0.066190 0.111783" rpy="0.231224 6.279694 3.148548"/>
+
+      <!-- what we calibrated with alexis, relative to ee link -->
+      <!-- <origin xyz="0.001329 -0.066190 0.111783" rpy="0.231224 6.279694 3.148548"/>  -->
+
+      <!-- from tf lookup shifted to gripper_base_link -->
+      <origin xyz="-0.00132899999999 0.06619 0.071683" rpy="0.231224 -0.00349130717959 0.00695534641"/> 
     </joint>
 
     <link name="rs_camera_link"/>
