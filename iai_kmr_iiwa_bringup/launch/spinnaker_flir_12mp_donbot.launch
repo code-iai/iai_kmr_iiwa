@@ -6,6 +6,7 @@
   <arg name="binning"		default="1"	doc="Binning for cameras, when changing from 2 to 1 cameras need to be unplugged and replugged"/>
   <arg name="color"		default="false"	doc="Should color images be used (only works on models that support color images)"/>
   <arg name="exp"               default="1300"	doc="Exposure setting for cameras"/>
+  <!-- <arg name="exp"               default="10000"  doc="Exposure setting for cameras"/> -->
   <arg name="frames"            default="0"	doc="Numer of frames to save/view 0=ON"/>
   <arg name="live"              default="false"	doc="Show images on screen GUI"/>
   <arg name="live_grid"         default="false"	doc="Show images on screen GUI in a grid"/>

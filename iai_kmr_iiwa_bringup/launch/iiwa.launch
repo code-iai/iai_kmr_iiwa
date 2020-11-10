@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="iiwa/publishJointStates" value="true"/>
+  <!-- <param name="iiwa/toolName" type="string" value="WSG50" /> -->
+
+  <!-- hardware_interface to use : PositionJointInterface, EffortJointInterface, VelocityJointInterface. -->
+  <arg name="hardware_interface" default="PositionJointInterface"/>
+  <!-- The is gonna have its nodes/topics under a namespace with the same name. -->
+  <arg name="robot_name" default="iiwa"/>
+  <!-- Model of the iiwa to use : iiwa7, iiwa14 -->
+  <arg name="model" default="iiwa14"/>
+  
+  <remap from="/$(arg hardware_interface)_trajectory_controller/follow_joint_trajectory" 
+         to="/$(arg robot_name)/$(arg hardware_interface)_trajectory_controller/follow_joint_trajectory" />
+  <remap from="/$(arg hardware_interface)_trajectory_controller/state" 
+         to="/$(arg robot_name)/$(arg hardware_interface)_trajectory_controller/state" />
+  <!-- <remap from="robot_description" to="/$(arg robot_name)/robot_description" />  -->
+  <remap from="/get_planning_scene" to="/$(arg robot_name)/get_planning_scene" /> 
+  
+    
+  <!-- Load controllers accordingly to parameters -->
+  <!-- <include file="$(find iiwa_control)/launch/iiwa_control.launch">
+      <arg name="hardware_interface" value="$(arg hardware_interface)" />
+      <arg name="controllers" value="joint_state_controller $(arg hardware_interface)_trajectory_controller" />
+      <arg name="robot_name" value="$(arg robot_name)" />
+      <arg name="model" value="$(arg model)" />
+  </include> -->
+  
+  <!-- Launches the controllers according to the hardware interface selected -->
+  <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
+  
+  <!-- <arg name="hardware_interface" default="PositionJointInterface"/> -->
+  <arg name="controllers" default="joint_state_controller $(arg hardware_interface)_trajectory_controller"/>
+  <!-- <arg name="robot_name" default="iiwa" /> -->
+  <!-- <arg name="model" default="iiwa7" /> -->
+  <arg name="joint_state_frequency" default="100" />
+  <arg name="robot_state_frequency" default="100" />
+  
+  <!-- Loads joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find iiwa_control)/config/iiwa_control.yaml" command="load" />
+  <param name="/$(arg robot_name)/joint_state_controller/publish_rate" value="$(arg joint_state_frequency)" />
+  
+  <!-- Loads the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="$(arg controllers)" />
+
+  <!-- Robot interface -->
+  <include file="$(find iiwa_hw)/launch/iiwa_hw.launch" >
+      <arg name="hardware_interface" value="$(arg hardware_interface)" />
+  </include>
+      
+
+
+</launch>
+

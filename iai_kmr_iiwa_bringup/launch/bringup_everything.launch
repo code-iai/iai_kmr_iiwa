@@ -9,7 +9,7 @@
 
   <include file="$(find iai_kmr_iiwa_bringup)/launch/cameras.launch"/>
 
-  <!-- <include file="$(find barcode_finder)/launch/barcode_finder.launch"/> -->
-  <!-- <include file="$(find separator_marker_detector)/launch/detector.launch"/> -->
+  <include file="$(find barcode_finder)/launch/barcode_finder.launch"/>
+  <include file="$(find separator_marker_detector)/launch/detector.launch"/>
 
 </launch>

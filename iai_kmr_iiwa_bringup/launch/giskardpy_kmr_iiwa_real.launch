@@ -59,7 +59,7 @@
     </rosparam>
   </node>
 
-  <!-- <include file="$(find iai_kmr_iiwa_bringup)/launch/omni_pose_follower.launch"/> -->
-  <include file="$(find base_controller)/launch/base_controller_kmr_iiwa.launch"/>
+  <include file="$(find omni_pose_follower)/launch/omni_pose_follower_kmr_iiwa.launch"/>
+  <!-- <include file="$(find base_controller)/launch/base_controller_kmr_iiwa.launch"/> -->
 
 </launch>

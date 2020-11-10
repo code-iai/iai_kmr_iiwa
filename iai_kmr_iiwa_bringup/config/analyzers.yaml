@@ -1,0 +1,11 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  Base:
+    type: GenericAnalyzer
+    path: omnidrive
+    contains: [
+      'Emergency Stop',
+      'status drive 1',
+      'status drive 5'
+      ]

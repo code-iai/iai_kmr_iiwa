@@ -1,0 +1,33 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  rosout_diagnostics:
+    type: GenericAnalyzer
+    path: Rosout Diagnostics
+    find_and_remove_prefix: rosout_diagnostics
+    discard_stale: true
+    timeout: 5.0
+  sensors:
+    type: AnalyzerGroup
+    path: Sensors
+    analyzers:
+      hokuyo_front:
+        type: GenericAnalyzer
+        path: Hokuyo Front
+        find_and_remove_prefix: hokuyo_front
+        num_items: 2
+      hokuyo_back:
+        type: GenericAnalyzer
+        path: Hokuyo Back
+        find_and_remove_prefix: hokuyo_back
+        num_items: 2
+      ds4:
+        type: GenericAnalyzer
+        path: Sony DS4
+        find_and_remove_prefix: ds4_joy
+        num_items: 1
+      rs_cam:
+        type: GenericAnalyzer
+        path: RealSense Camera
+        find_and_remove_prefix: rs_camera
+        num_items: 2
