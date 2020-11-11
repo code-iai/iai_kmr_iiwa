@@ -1,7 +1,7 @@
 <launch>
   <include file="$(find iai_kmr_iiwa_description)/launch/upload_kmr_iiwa_with_odom_joints.launch" />
 
-  <include file="$(find iai_donbot_sim)/launch/wsg_50_for_kinematic_sim.launch" />
+  <include file="$(find iai_kmr_iiwa_sim)/launch/wsg_50_for_kinematic_sim.launch" />
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
 
@@ -49,6 +49,6 @@
 
   <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
 
-  <include file="$(find iai_donbot_sim)/launch/refills_finger_hacks.launch"/>
+  <include file="$(find iai_kmr_iiwa_sim)/launch/refills_finger_hacks.launch"/>
 
 </launch>

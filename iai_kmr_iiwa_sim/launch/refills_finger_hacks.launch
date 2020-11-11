@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="iai_kmr_iiwa_sim" type="refills_finger_js_publisher.py" name="refills_finger_js_publisher" />
+
+  <node pkg="iai_kmr_iiwa_sim" type="refills_finger_fake_traj_server.py" name="refills_finger_fake_traj_server" />
+</launch>
