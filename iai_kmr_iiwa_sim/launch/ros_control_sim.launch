@@ -43,11 +43,12 @@
     <param name="odom_y_joint" value="odom_y_joint"/>
     <param name="odom_z_joint" value="odom_z_joint"/>
     <param name="odom" value="odom"/>
+    <param name="base_footprint" value="base_link"/>
     <remap from="~cmd_vel" to="/cmd_vel" />
     <remap from="~commands" to="/commands" />
   </node>
 
-  <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
+  <include file="$(find omni_pose_follower)/launch/omni_pose_follower_kmr_iiwa.launch"/>
 
   <include file="$(find iai_kmr_iiwa_sim)/launch/refills_finger_hacks.launch"/>
 
