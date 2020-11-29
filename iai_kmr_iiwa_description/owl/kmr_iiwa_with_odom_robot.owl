@@ -44,7 +44,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#hasMaximumSpeed"/>
-                <owl:hasValue rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#MaximumSpeed_IIWA"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#IIWAMaximumSpeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>todo: base widht&amp;depth 668mm??</rdfs:comment>
@@ -108,14 +108,14 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#hasBodyPart"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">9</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Limb"/>
+                <owl:onClass rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWALimb"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#hasBodyPart"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Gripper"/>
+                <owl:onClass rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWAGripper"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -203,17 +203,17 @@
     </owl:NamedIndividual>
 
 
-    <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOM_BACK_LASER -->
+    <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_BACK_LASER -->
 
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOM_BACK_LASER">
-        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOMLaserScanner"/>
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_BACK_LASER">
+        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWALaserScanner"/>
         <urdf:hasBaseLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">back_laser</urdf:hasBaseLinkName>
     </owl:NamedIndividual>
 
-    <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOM_FRONT_LASER -->
+    <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_FRONT_LASER -->
 
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOM_FRONT_LASER">
-        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOMLaserScanner"/>
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_FRONT_LASER">
+        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWALaserScanner"/>
         <urdf:hasBaseLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">front_laser</urdf:hasBaseLinkName>
     </owl:NamedIndividual>
 
@@ -228,7 +228,7 @@
     <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ANGLE_ADAPTER_CONNECTOR_0 -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ANGLE_ADAPTER_CONNECTOR_0">
-        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOMAngleAdapterConnector"/>
+        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWAAngleAdapterConnector"/>
         <urdf:hasBaseLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">angle_adapter_connector</urdf:hasBaseLinkName>
         <urdf:hasEndLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">angle_adapter_plate</urdf:hasEndLinkName>
     </owl:NamedIndividual>
@@ -236,7 +236,7 @@
     <!-- http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ANGLE_ADAPTER_PLATE_0 -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ANGLE_ADAPTER_PLATE_0">
-        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWA_ODOMAngleAdapterPlate"/>
+        <rdf:type rdf:resource="http://knowrob.org/kb/KMR_IIWA_WITH_ODOM_ROBOT.owl#IIWAAngleAdapterPlate"/>
         <urdf:hasBaseLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">angle_adapter_plate</urdf:hasBaseLinkName>
         <urdf:hasEndLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iiwa_link_0</urdf:hasEndLinkName>
     </owl:NamedIndividual>
@@ -419,9 +419,9 @@
         <urdf:hasBaseLinkName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gripper_finger_right_link</urdf:hasBaseLinkName>
     </owl:NamedIndividual>
 
-    <!-- http://knowrob.org/kb/srdl2-comp.owl#MaximumSpeed_IIWA -->
+    <!-- http://knowrob.org/kb/srdl2-comp.owl#IIWAMaximumSpeed -->
 
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/srdl2-comp.owl#MaximumSpeed_IIWA">
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/srdl2-comp.owl#IIWAMaximumSpeed">
         <rdf:type rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#MaximumSpeed"/>
         <srdl2-comp:hasMaximumSpeedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</srdl2-comp:hasMaximumSpeedValue>
         <rdfs:comment>in m/s</rdfs:comment>
