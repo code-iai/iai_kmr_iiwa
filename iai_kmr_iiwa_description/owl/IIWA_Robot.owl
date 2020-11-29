@@ -51,14 +51,14 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#hasBodyPart"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://knowrob.org/kb/IIWA.owl#IIWA_BACK_LASER"/>
+                <owl:onClass rdf:resource="http://knowrob.org/kb/IIWA.owl#IIWALaserScanner_Back"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#hasBodyPart"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://knowrob.org/kb/IIWA.owl#IIWA_FRONT_LASER"/>
+                <owl:onClass rdf:resource="http://knowrob.org/kb/IIWA.owl#IIWALaserScanner_Front"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>todo: base widht&amp;depth 668mm??</rdfs:comment>
