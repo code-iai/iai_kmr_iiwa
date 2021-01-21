@@ -23,7 +23,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://iai_kmr_iiwa_description/meshes/kmp200_export.stl"/>
+          <mesh filename="package://iai_kmr_iiwa_description/meshes/kmp200_3ds_export_s.stl"/>
         </geometry>
         <material name="Grey"/>
       </collision>
